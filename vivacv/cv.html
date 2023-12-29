@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="e4amR5UWlRQYCZ2HiNS8YvJWHjrH68RD49cPh7tdHvs" />
+    <title>vivacv-English</title>
+    <link rel="icon" href="VivaCV.ico" type="image/png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <meta name="description" content="A free resume-building website supporting both Arabic and English, allowing users to effortlessly create professional resumes. The user-friendly interface offers customizable templates, and the option to save resumes in various formats, such as PDF. The site also provides tips for crafting engaging and effective resumes.">
+    <meta name="keywords" content="سيرة ذاتية، Assem Khashaba، ViVaCV, انشاء سيره ذاتيه , Front end ,cv,CV">
+    <meta name="author" content="Assem Khashaba">
+    <style>
+    body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            text-align: right;
+            background-color: #f5f5f5;
+            
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            display: inline;
+    position: relative;
+    top: -60px;
+    right:40%;
+
+        }
+
+        form {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            display: flex;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            outline: transparent;
+
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            background: #062323;
+            padding: 10px;
+            border: 2px solid #975353;
+            color: white;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            display: flex;
+            transition: all 0.5s ease;
+        }
+        button:hover{
+            padding: 12px 18px;
+        }
+
+        #output {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            max-width: 800px;
+            margin: auto;
+            text-align: left;
+            gap: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #output img {
+            height: 100px;
+            margin-bottom: 15px;
+            display: block;
+            grid-column: span 2;
+            border-radius: 50%;
+        }
+
+        #output .personal-info,
+        #output .contact-info,
+        #output .languages,
+        #output .skills,
+        #output .name-objective-qualifications,
+        #output .qualifications {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        #output .personal-info {
+            background-color: #e6f7ff;
+        }
+
+        #output .contact-info {
+            background-color: #e0e0eb;
+        }
+
+        #output .languages,
+        #output .skills {
+            background-color: #f0f8ff;
+        }
+
+        #output .name-objective-qualifications {
+            background-color: #ffebcc;
+        }
+
+        #output .qualifications {
+            background-color: #d9ead3;
+        }
+
+        #output p {
+            margin: 10px 0;
+            background: azure;
+            padding: 10px;
+            border: 2px solid #000;
+        }
+
+        #deleteAll {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .Site{
+            max-width: 600px;
+            margin: auto;
+
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            outline: transparent;
+            display: flex;
+            }
+           
+        @media print{
+            .con{
+                display: none;
+            }
+            body {
+                background-color: #fff;
+            }
+
+            button {
+                display: none;
+            }
+
+           
+        }
+
+        /* تنسيق hr الافتراضي */
+hr {
+  border: 1px solid #000; /* لون الحدود والسمك الافتراضي */
+  margin: 20px 0; /* هوامش أعلى وأسفل */
+  box-shadow: 1px 2px 4px 0px #851;
+}
+/* تنسيق الـ label */
+label.site {
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* تنسيق الـ select */
+select[name="siteLanguages"] {
+    padding: 8px;
+    font-size: 16px;
+}
+
+/* تنسيق الـ option */
+select[name="siteLanguages"] option {
+    padding: 8px;
+    font-size: 14px;
+}
+
+/* تنسيق الرابط داخل الـ option */
+select[name="siteLanguages"] option a {
+    text-decoration: none; /* إزالة التنسيق الافتراضي للرابط */
+    color: #333; /* لون النص */
+}
+
+/* تنسيق hr مخصص */
+
+nav {
+            display: flex;
+            justify-content: center;
+            background-color: #555;
+            padding: 0.5em;
+            max-width: 600px;
+            margin: auto;
+
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            outline: transparent;
+            display: flex;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1em;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+        #instructionsPopup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+    }
+
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+    }
+    </style>
+
+</head>
+<body>
+    <div class="con">
+
+        <img src="VivaCV.png" alt="" style="margin-bottom: 52px;
+        display: flex;
+        position: relative;
+        left: 40%;">
+
+    <label for="" class="Site">Site languages</label>
+    <nav>
+        <a href="index.html">العربية</a>
+        <a href="cv.html">English</a>
+    </nav>
+    <form id="cvForm">
+       
+
+        <label for="profilePicture">Profile Picture:</label>
+        <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+
+        <label for="birthDate">Date of Birth:</label>
+        <input type="date" id="birthDate" name="birthDate">
+
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" required>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="website">Personal Website:</label>
+        <input type="url" id="website" name="website" >
+
+        <label for="projects">Previous Projects:</label>
+        <textarea id="projects" name="projects" required></textarea>
+
+        <label for="skills">Skills:</label>
+        <ul id="skillsList">
+            <li>
+                <input type="text" name="skillName" placeholder="Skill Name" required>
+                <select name="skillLevel">
+                    <option value="Excellent">Excellent</option>
+                    <option value="Very Good">Very Good</option>
+                    <option value="Good">Good</option>
+                    <option value="Fair">Fair</option>
+                    <option value="Weak">Weak</option>
+                </select>
+            </li>
+        </ul>
+        <button type="button" onclick="addSkill()">Add New Skill</button>
+
+        <label for="objective">Career Objective:</label>
+        <textarea id="objective" name="objective" required></textarea>
+
+        <label for="education">Educational Qualification:</label>
+        <ul id="educationList">
+            <li>
+                <input type="text" name="degree" placeholder="Degree">
+                <input type="text" name="major" placeholder="Major">
+                <label for="" style="color: white;">startDate</label>
+                <input type="date" name="start Date">
+                <label for="" style="color: white;">endDate</label>
+                <input type="date" name="end Date">
+            </li>
+        </ul>
+        <button type="button" onclick="addEducation()">Add Educational Qualification</button>
+<hr>
+        <button type="button" onclick="generateCV()" style="background: #0b3069; color: #f7f7f7; box-shadow: 2px 2px 2px #333;cursor: pointer;">Generate Resume</button>
+        
+    </form>
+
+
+    <button onclick="window.print()" accesskey="p" style="background: #000; color: #f0f8ff; box-shadow: 2px 2px 2px #333;cursor: pointer; display: flex; position: relative; left: 45%;">Print or save as PDF</button>
+    <button id="showInstructions">Show instructions</button>
+
+
+    <div id="overlay"></div>
+    <div id="instructionsPopup">
+      <p>Enter your details in the fields below and click “Create CV”.</p>
+     
+      <p>After that, you can choose "Print" or "Save as PDF".</p>
+      <button id="closeInstructions">Close</button>
+    </div>
+</div>
+    <div id="output"></div>
+
+    <script>
+        // Load saved data on page load
+        window.onload = function() {
+            loadSavedData();
+        };
+
+        function addSkill() {
+            const skillsList = document.getElementById('skillsList');
+            const newSkill = document.createElement('li');
+            newSkill.innerHTML = `
+                <input type="text" name="skillName" placeholder="Skill Name">
+                <select name="skillLevel">
+                    <option value="Excellent">Excellent</option>
+                    <option value="Very Good">Very Good</option>
+                    <option value="Good">Good</option>
+                    <option value="Fair">Fair</option>
+                    <option value="Weak">Weak</option>
+                </select>
+            `;
+            skillsList.appendChild(newSkill);
+        }
+
+        function addEducation() {
+            const educationList = document.getElementById('educationList');
+            const newEducation = document.createElement('li');
+            newEducation.innerHTML = `
+                <input type="text" name="degree" placeholder="Degree">
+                <input type="text" name="major" placeholder="Major">
+                <input type="date" name="startDate">
+                <input type="date" name="endDate">
+            `;
+            educationList.appendChild(newEducation);
+        }
+
+        function generateCV() {
+            const form = document.getElementById('cvForm');
+            const output = document.getElementById('output');
+            const formData = new FormData(form);
+
+            let resultHTML = '<h2>Resume</h2>';
+            
+            formData.forEach((value, key) => {
+                if (value && key !== 'skillLevel' && key !== 'endDate') {
+                    if (key === 'profilePicture') {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            resultHTML = `<img src="${e.target.result}" alt="Profile Picture">` + resultHTML;
+                            output.innerHTML = resultHTML;
+                        };
+                        reader.readAsDataURL(value);
+                    } else {
+                        resultHTML += `<p><strong>${key}:</strong> ${value}</p>`;
+                    }
+                } else if (key === 'skillLevel') {
+                    resultHTML += `<ul>`;
+                    const skillName = document.getElementsByName('skillName')[0].value;
+                    const skillLevel = document.getElementsByName('skillLevel')[0].value;
+                    if (skillName) {
+                        resultHTML += `<li>${skillName} (${skillLevel})</li>`;
+                    }
+                    resultHTML += '</ul>';
+                } else if (key === 'endDate') {
+                    resultHTML += `<p><strong>Educational Qualifications:</strong></p><ul>`;
+                    const degreeName = document.getElementsByName('degree')[0].value;
+                    const major = document.getElementsByName('major')[0].value;
+                    const startDate = document.getElementsByName('startDate')[0].value;
+                    const endDate = document.getElementsByName('endDate')[0].value;
+                    if (degreeName) {
+                        resultHTML += `<li>${degreeName} - ${major} (${startDate} to ${endDate})</li>`;
+                    }
+                    resultHTML += '</ul>';
+                }
+            });
+
+            output.innerHTML = resultHTML;
+
+            // Save data to localStorage
+            saveData();
+        }
+
+        function deleteAll() {
+            // Clear form and output
+            document.getElementById('cvForm').reset();
+            document.getElementById('output').innerHTML = '';
+
+            // Clear data from localStorage
+            localStorage.removeItem('resumeData');
+        }
+
+        function saveData() {
+            const form = document.getElementById('cvForm');
+            const formData = new FormData(form);
+
+            // Convert FormData to object
+            const dataObject = {};
+            formData.forEach((value, key) => {
+                dataObject[key] = value;
+            });
+
+            // Save data to localStorage
+            localStorage.setItem('resumeData', JSON.stringify(dataObject));
+        }
+
+        function loadSavedData() {
+            const savedData = localStorage.getItem('resumeData');
+            if (savedData) {
+                const dataObject = JSON.parse(savedData);
+
+                // Set form values
+                for (const key in dataObject) {
+                    const element = document.getElementById(key);
+                    if (element) {
+                        element.value = dataObject[key];
+                    }
+                }
+            }
+        }
+        function preparePrint() {
+      // Display the printing area
+      document.getElementById('printingArea').style.display = 'block';
+      // Open the print dialog
+      window.print();
+    }
+
+ // تحديد العناصر
+ const instructionsPopup = document.getElementById('instructionsPopup');
+    const overlay = document.getElementById('overlay');
+    const showInstructionsButton = document.getElementById('showInstructions');
+    const closeInstructionsButton = document.getElementById('closeInstructions');
+   
+   
+    
+    // عند النقر على الزر "اظهار التعليمات"
+    showInstructionsButton.addEventListener('click', function() {
+      instructionsPopup.style.display = 'block';
+      overlay.style.display = 'block';
+    });
+
+    // عند النقر على الزر "اغلاق"
+    closeInstructionsButton.addEventListener('click', function() {
+      instructionsPopup.style.display = 'none';
+      overlay.style.display = 'none';
+    });
+
+    
+    </script>
+</body>
+</html>
